@@ -1,11 +1,12 @@
 import { navigation, pageTitles } from "../data";
+import logo from "../assets/app_logo.png";
 
 export function Header({ page, language, setLanguage, onThemeToggle, menuOpen, setMenuOpen, t }) {
   return (
     <header>
       <div className="w bar">
         <a className="logo" href="#home">
-          <i aria-hidden="true"><b /><s /><b /></i>Rota
+          <i aria-hidden="true"><img src={logo} width="28" alt="Rota" /></i>Rota
         </a>
         <nav id="nav" className={menuOpen ? "o" : ""} aria-label={t("Main", "القائمة الرئيسية")}>
           {navigation.map(([id, english, arabic]) => (
