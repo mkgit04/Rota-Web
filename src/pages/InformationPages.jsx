@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { developer, developerLinks, downloadLinks, faqItems, features, howItWorks, ticketTypes } from "../data";
+import { developer, developerLinks, downloadLinks, faqItems, features, howItWorks } from "../data";
 import { CardGrid, DownloadPlatforms, GpsNote, PhoneMockup } from "../components/SiteChrome";
 
 function DeveloperLinkIcon({ icon }) {
@@ -89,11 +89,14 @@ export function FeaturesPage({ t }) {
   );
 }
 
-export function TicketsPage({ t }) {
-  const fields = [
-    ["Price (EGP)", "السعر (جنيه)"], ["Coverage", "التغطية"], ["Eligibility", "الأهلية"],
-    ["Conditions", "الشروط"], ["Last verified", "آخر تحقق"], ["About", "نبذة"],
-  ];
+export function TicketsPage({ t, ticketConfig }) {
+  const ticketNames = {
+    "1": ["Yellow Ticket", "التذكرة الصفراء"],
+    "2": ["Green Ticket", "التذكرة الخضراء"],
+    "3": ["Red Ticket", "التذكرة الحمراء"],
+    "4": ["Blue Ticket", "التذكرة الزرقاء"],
+  };
+
   return (
     <section><div className="w">
       <h1>{t("Ticket information", "معلومات التذاكر")}</h1>
@@ -101,14 +104,49 @@ export function TicketsPage({ t }) {
         "Informational only. Rota does not sell, issue, validate or store tickets. Fares and conditions can change; verify against current official information.",
         "للمعلومات فقط. روتا لا يبيع التذاكر ولا يصدرها ولا يتحقق منها ولا يخزنها. قد تتغير الأجرة والشروط، فتحقق من المعلومات الرسمية الحالية.",
       )}</div>
-      <div className="g">{ticketTypes.map((ticket) => (
-        <div className="c" key={ticket}>
-          <h3>{t(`Ticket type ${ticket + 1}`, `نوع التذكرة ${ticket + 1}`)}</h3>
-          {fields.map(([en, ar]) => (
-            <p className="ticket-field" key={en}><strong>{t(en, ar)}:</strong> <span className="mut">{t("Details not yet supplied", "لم تُقدَّم التفاصيل بعد")}</span></p>
-          ))}
-        </div>
-      ))}</div>
+      {/* <p className={`ticket-status ${ticketConfig.error ? "has-error" : ""}`} role={ticketConfig.error ? "alert" : "status"}>
+        {ticketConfig.loading
+          ? t("Connecting to Firebase Remote Config…", "جارٍ الاتصال بـ Firebase Remote Config…")
+          : ticketConfig.error
+            ? t(ticketConfig.error.en, ticketConfig.error.ar)
+            : t("Ticket information loaded from Firebase Remote Config.", "تم تحميل معلومات التذاكر من Firebase Remote Config.")}
+      </p> */}
+      {ticketConfig.loading && <div className="ticket-loading" aria-hidden="true" />}
+      {!ticketConfig.loading && ticketConfig.source === "remote" && <div className="g ticket-grid">{ticketConfig.tickets.map((ticket) => {
+        const [englishName, arabicName] = ticketNames[ticket.id] ?? [ticket.title, ticket.title];
+        const fares = [
+          [t("Standard", "عادية"), ticket.price],
+          [t("Elderly", "كبار السن"), ticket.elderlyPrice],
+          [t("Disability", "ذوي الإعاقة"), ticket.disabilityPrice],
+        ];
+
+        return (
+          <article
+            className="c ticket-card"
+            key={ticket.id}
+            style={{
+              "--ticket-accent": ticket.color,
+              "--ticket-surface": ticket.secondaryColor,
+              "--ticket-ink": ticket.tertiaryColor,
+            }}
+          >
+            <div className="ticket-card-heading">
+              <h2>{t(englishName, arabicName)}</h2>
+              <span className="ticket-coverage">
+                {t(`Up to ${ticket.maxNumOfStations} stations`, `حتى ${ticket.maxNumOfStations} محطة`)}
+              </span>
+            </div>
+            <div className="ticket-fares">
+              {fares.map(([label, price]) => (
+                <div className="ticket-fare" key={label}>
+                  <span>{label}</span>
+                  <strong>{price} <small>{t("EGP", "جنيه")}</small></strong>
+                </div>
+              ))}
+            </div>
+          </article>
+        );
+      })}</div>}
     </div></section>
   );
 }

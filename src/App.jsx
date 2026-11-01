@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { pageTitles } from "./data";
+import { getMetroTickets } from "./firebase/remoteConfig";
 import { Footer, Header } from "./components/SiteChrome";
 import HomePage from "./pages/HomePage";
 import {
@@ -31,7 +32,31 @@ export default function App() {
   const [theme, setTheme] = useState(() => readPreference("rota-theme", ""));
   const [page, setPage] = useState(getPageFromHash);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [ticketConfig, setTicketConfig] = useState({
+    tickets: [],
+    source: "none",
+    error: null,
+    loading: false,
+  });
   const t = (english, arabic) => language === "ar" ? arabic : english;
+
+  useEffect(() => {
+    if (page !== "tickets") return undefined;
+
+    let active = true;
+    setTicketConfig({
+      tickets: [],
+      source: "none",
+      error: null,
+      loading: true,
+    });
+    getMetroTickets().then((result) => {
+      if (active) setTicketConfig({ ...result, loading: false });
+    });
+    return () => {
+      active = false;
+    };
+  }, [page]);
 
   useEffect(() => {
     const updatePage = () => {
@@ -114,7 +139,7 @@ export default function App() {
   const pages = {
     home: <HomePage t={t} />,
     features: <FeaturesPage t={t} />,
-    tickets: <TicketsPage t={t} />,
+    tickets: <TicketsPage t={t} ticketConfig={ticketConfig} />,
     "how-it-works": <HowItWorksPage t={t} />,
     faq: <FaqPage t={t} />,
     support: <SupportPage t={t} />,

@@ -300,5 +300,3 @@ export const pageTitles = {
   terms: ["Terms – Rota", "الشروط – روتا"],
   download: ["Download – Rota", "التحميل – روتا"],
 };
-
-export const ticketTypes = [0, 1, 2];

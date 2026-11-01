@@ -31,3 +31,9 @@ The site uses relative asset paths, so it works both on a GitHub Pages project s
 - `.github/workflows/deploy.yml` — automated GitHub Pages deployment.
 
 Store links, operator details, and contact destinations remain unconfigured, matching the source page.
+
+## Firebase Remote Config
+
+The ticket page fetches the `tickets` Remote Config parameter when opened, as JSON with a `metro` array. The Firebase web app configuration is supplied through Vite environment variables; copy `.env.example` to `.env.local` and fill in the values from **Firebase Console → Project settings → Your apps → Web app**. Local `.env.local` files are ignored by Git.
+
+Publish the `tickets` parameter in Remote Config as a JSON string containing the ticket data. The app validates the payload and displays only a successfully fetched remote value. It shows a loading or error message rather than bundled ticket data when the parameter is missing or a fetch fails.

@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@firebase/app": "^0.16.2",
+    "@firebase/remote-config": "^0.9.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
