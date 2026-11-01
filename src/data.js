@@ -72,21 +72,122 @@ export const gpsNotice = [
   "قد تضعف إشارة GPS أو تنقطع تحت الأرض، لذلك قد يتوقف اكتشاف المحطات. يعتمد التتبع في الخلفية على الأذونات وإعدادات البطارية وقيود النظام، ولا يُضمن بعد إغلاق النظام للتطبيق.",
 ];
 
+
 export const faqItems = [
-  ["What is Rota?", "Rota is a mobile app to explore Cairo Metro stations, plan journeys, calculate fares, find nearby stations and follow active trips.", "ما هو روتا؟", "روتا تطبيق للجوال لاستكشاف محطات مترو القاهرة وتخطيط الرحلات وحساب الأجرة وإيجاد أقرب محطة ومتابعة الرحلة."],
-  ["Can I calculate metro fares?", "Yes, for supported journeys using the fare rules in the app. Verify the fare before travelling, as official prices can change.", "هل يمكنني حساب أجرة المترو؟", "نعم للرحلات المدعومة وفق قواعد الأجرة في التطبيق. تحقق من الأجرة قبل السفر لأن الأسعار الرسمية قد تتغير."],
-  ["Can I find the nearest station?", "Yes, if you allow location access.", "هل أستطيع إيجاد أقرب محطة؟", "نعم، بشرط السماح بالوصول إلى الموقع."],
-  ["Does Rota track my trip live?", "Yes: current and next station and progress. Accuracy depends on location data and device conditions.", "هل يتتبع روتا رحلتي مباشرة؟", "نعم: المحطة الحالية والتالية والتقدم. تعتمد الدقة على بيانات الموقع وظروف الجهاز."],
-  ["Does live tracking work underground?", "GPS may be weak or unavailable underground. Rota partly handles GPS loss, but uninterrupted tracking cannot be guaranteed.", "هل يعمل التتبع تحت الأرض؟", "قد تضعف إشارة GPS أو تنقطع. يتعامل روتا جزئيًا مع فقدان الإشارة لكن لا يمكن ضمان تتبع مستمر."],
-  ["Does tracking continue in the background?", "During an active trip, when permissions and system conditions allow. Battery settings or restrictions may interrupt it.", "هل يستمر التتبع في الخلفية؟", "أثناء الرحلة النشطة عندما تسمح الأذونات وظروف النظام. قد تقطعه إعدادات البطارية أو القيود."],
-  ["Does tracking continue after I force-close the app?", "No promise is made. Reliable continuation after the system terminates the app is not implemented.", "هل يستمر التتبع بعد إغلاق التطبيق قسرًا؟", "لا نَعِد بذلك. الاستمرار الموثوق بعد إنهاء النظام للتطبيق غير مُنفّذ."],
-  ["Does Rota sell metro tickets?", "No. Rota provides journey and fare information, not a digital ticket or payment service.", "هل يبيع روتا تذاكر المترو؟", "لا. يقدم روتا معلومات الرحلة والأجرة وليس تذكرة رقمية أو خدمة دفع."],
-  ["Does Rota require an account?", "The current app is designed without traditional account registration. This will be confirmed for the final release.", "هل يتطلب روتا حسابًا؟", "صُمم التطبيق الحالي دون تسجيل حساب تقليدي، وسيتم تأكيد ذلك في الإصدار النهائي."],
-  ["Does Rota work in Arabic?", "Yes, Arabic and English are supported.", "هل يعمل روتا بالعربية؟", "نعم، العربية والإنجليزية مدعومتان."],
-  ["Can I change the app theme?", "Yes, light and dark themes.", "هل يمكن تغيير المظهر؟", "نعم، مظهر فاتح وداكن."],
-  ["How can I submit feedback?", "Through the app’s feedback form (Google Forms). The link will appear here once configured.", "كيف أرسل ملاحظاتي؟", "عبر نموذج الملاحظات في التطبيق (Google Forms). سيظهر الرابط هنا عند إعداده."],
-  ["Does Rota provide live service alerts?", "No. Live service announcements are not implemented.", "هل يوفر روتا تنبيهات الخدمة المباشرة؟", "لا. إعلانات الخدمة المباشرة غير مُنفّذة."],
-  ["Is Rota affiliated with Cairo Metro?", "No. Rota is an independent app, not operated or endorsed by the metro operator or the National Authority for Tunnels.", "هل روتا تابع لمترو القاهرة؟", "لا. روتا تطبيق مستقل ولا تشغّله أو تعتمده جهة تشغيل المترو أو الهيئة القومية للأنفاق."],
+  [
+    "What is Rota?",
+    "Rota is an independent mobile app that helps you explore Cairo Metro, plan journeys, calculate fares, find the nearest station, and track your trips.",
+    "ما هو روتا؟",
+    "روتا تطبيق مستقل يساعدك على استكشاف مترو القاهرة وتخطيط رحلاتك وحساب الأجرة والعثور على أقرب محطة ومتابعة رحلاتك."
+  ],
+  [
+    "Can I explore all Cairo Metro stations?",
+    "Yes. You can browse metro lines, explore their stations, and view station information to help plan your journey.",
+    "هل يمكنني استكشاف جميع محطات مترو القاهرة؟",
+    "نعم. يمكنك تصفح خطوط المترو واستكشاف محطاتها والاطلاع على معلوماتها لمساعدتك في تخطيط رحلتك."
+  ],
+  [
+    "Can I calculate metro fares?",
+    "Yes. Rota calculates fares for supported journeys based on the fare rules available in the app. Always verify the latest official fare before travelling.",
+    "هل يمكنني حساب أجرة المترو؟",
+    "نعم. يحسب روتا أجرة الرحلات المدعومة وفق قواعد الأجرة المتاحة في التطبيق. يُرجى التأكد من الأسعار الرسمية قبل السفر."
+  ],
+  [
+    "How can I find the nearest metro station?",
+    "Allow location access, and Rota will help you find the nearest station and estimate the walking distance and time.",
+    "كيف يمكنني العثور على أقرب محطة مترو؟",
+    "اسمح للتطبيق بالوصول إلى موقعك، وسيساعدك روتا في العثور على أقرب محطة وتقدير مسافة ووقت المشي إليها."
+  ],
+  [
+    "Does walking navigation work offline?",
+    "Rota can calculate walking distance and estimated walking time locally using available station coordinates, without relying on an external navigation API.",
+    "هل تعمل حسابات المشي دون إنترنت؟",
+    "يمكن لروتا حساب مسافة المشي والوقت المتوقع محليًا باستخدام إحداثيات المحطات المتاحة، دون الاعتماد على واجهة برمجية خارجية للملاحة."
+  ],
+  [
+    "Does Rota track my trip live?",
+    "Yes. During an active trip, Rota can help you follow your journey by showing your current station, next station, and trip progress. Accuracy depends on location data and device conditions.",
+    "هل يتتبع روتا رحلتي مباشرة؟",
+    "نعم. أثناء الرحلة النشطة، يساعدك روتا على متابعة رحلتك من خلال عرض المحطة الحالية والمحطة التالية وتقدم الرحلة. وتعتمد الدقة على بيانات الموقع وظروف الجهاز."
+  ],
+  [
+    "Does live tracking work underground?",
+    "GPS signals may become weak or unavailable underground. Rota includes some handling for GPS signal loss, but continuous and fully accurate tracking cannot be guaranteed.",
+    "هل يعمل التتبع المباشر تحت الأرض؟",
+    "قد تضعف إشارات GPS أو تنقطع تحت الأرض. يتضمن روتا بعض آليات التعامل مع فقدان الإشارة، لكن لا يمكن ضمان تتبع مستمر ودقيق بالكامل."
+  ],
+  [
+    "Does trip tracking continue in the background?",
+    "Rota is designed to continue tracking during an active trip when the required permissions and device conditions allow it. Battery optimization and system restrictions may interrupt tracking.",
+    "هل يستمر تتبع الرحلة في الخلفية؟",
+    "تم تصميم روتا لمواصلة التتبع أثناء الرحلة النشطة عندما تسمح الأذونات المطلوبة وظروف الجهاز بذلك. وقد تؤثر إعدادات توفير البطارية وقيود النظام على استمرار التتبع."
+  ],
+  [
+    "Does tracking continue if I force-close the app?",
+    "Reliable tracking after force-closing or terminating the app is not guaranteed. For the best experience, keep the app running during your trip.",
+    "هل يستمر التتبع إذا أغلقت التطبيق قسرًا؟",
+    "لا يمكن ضمان استمرار التتبع بشكل موثوق بعد إغلاق التطبيق قسرًا أو إنهائه. للحصول على أفضل تجربة، اترك التطبيق يعمل أثناء رحلتك."
+  ],
+  [
+    "Can I view my previous trips?",
+    "Yes. Rota saves your trip history locally so you can review your previous journeys.",
+    "هل يمكنني عرض رحلاتي السابقة؟",
+    "نعم. يحفظ روتا سجل رحلاتك محليًا حتى تتمكن من مراجعة رحلاتك السابقة."
+  ],
+  [
+    "Can I save my favourite trips?",
+    "Yes. You can mark trips as favourites to make them easier to find and use again later.",
+    "هل يمكنني حفظ رحلاتي المفضلة؟",
+    "نعم. يمكنك إضافة الرحلات إلى المفضلة لتسهيل الوصول إليها واستخدامها مرة أخرى لاحقًا."
+  ],
+  [
+    "Can I start a previous trip again?",
+    "Yes. You can use the retrip option in your trip history to quickly plan the same journey again.",
+    "هل يمكنني إعادة رحلة سابقة؟",
+    "نعم. يمكنك استخدام خيار إعادة الرحلة من سجل رحلاتك لتخطيط الرحلة نفسها مرة أخرى بسهولة."
+  ],
+  [
+    "Does Rota require an account?",
+    "Rota is currently designed to work without traditional account registration. Check the final app release for any changes.",
+    "هل يتطلب روتا إنشاء حساب؟",
+    "تم تصميم روتا حاليًا للعمل دون الحاجة إلى إنشاء حساب تقليدي. يُرجى مراجعة الإصدار النهائي لمعرفة أي تغييرات."
+  ],
+  [
+    "Does Rota support Arabic and English?",
+    "Yes. You can use Rota in both Arabic and English.",
+    "هل يدعم روتا اللغتين العربية والإنجليزية؟",
+    "نعم. يمكنك استخدام روتا باللغتين العربية والإنجليزية."
+  ],
+  [
+    "Can I change the app theme?",
+    "Yes. Rota supports light and dark themes.",
+    "هل يمكنني تغيير مظهر التطبيق؟",
+    "نعم. يدعم روتا المظهر الفاتح والمظهر الداكن."
+  ],
+  [
+    "Does Rota provide live metro service alerts?",
+    "No. Live metro service announcements and disruption alerts are not currently available in Rota.",
+    "هل يوفر روتا تنبيهات مباشرة عن حالة المترو؟",
+    "لا. لا يوفر روتا حاليًا إعلانات مباشرة عن حالة الخدمة أو تنبيهات الأعطال والتأخيرات."
+  ],
+  [
+    "Does Rota sell metro tickets or accept payments?",
+    "No. Rota is an informational and journey-planning app. It does not sell tickets, process payments, or open metro gates.",
+    "هل يبيع روتا تذاكر المترو أو يستقبل المدفوعات؟",
+    "لا. روتا تطبيق للمعلومات وتخطيط الرحلات، ولا يبيع التذاكر أو يعالج المدفوعات أو يفتح بوابات المترو."
+  ],
+  [
+    "How can I send feedback or report a problem?",
+    "You can submit feedback through the feedback form available in the app. You can use it to share suggestions or report issues.",
+    "كيف يمكنني إرسال ملاحظات أو الإبلاغ عن مشكلة؟",
+    "يمكنك إرسال ملاحظاتك من خلال نموذج الملاحظات داخل التطبيق، سواء لمشاركة اقتراحاتك أو الإبلاغ عن مشكلة."
+  ],
+  [
+    "Is Rota officially affiliated with Cairo Metro?",
+    "No. Rota is an independent project and is not affiliated with, operated by, or officially endorsed by the Cairo Metro operator or the National Authority for Tunnels.",
+    "هل روتا تابع رسميًا لمترو القاهرة؟",
+    "لا. روتا مشروع مستقل، ولا يتبع أو يُدار بواسطة جهة تشغيل مترو القاهرة أو الهيئة القومية للأنفاق، كما أنه غير معتمد رسميًا من أي منهما."
+  ]
 ];
 
 export const howItWorks = [
