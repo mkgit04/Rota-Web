@@ -50,7 +50,7 @@ export const developer = {
   roleAr: "مطوّر برمجيات | مطوّر Flutter",
   bio: "A passionate developer working on innovative mobile applications.",
   bioAr: "مطوّر شغوف بإنشاء تطبيقات جوّال مبتكرة.",
-  email: "mhmd.ahmd.khattab@gmail.com.com",
+  email: "mhmd.ahmd.khattab@gmail.com",
   website: "https://mkgit04.github.io",
   github: "https://github.com/mkgit04",
   linkedin: "https://www.linkedin.com/in/mohammed-mk-khattab",
