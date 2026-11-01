@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ContactMethods } from "../components/SiteChrome";
 
 export function SupportPage({ t }) {
   const [values, setValues] = useState({ email: "", message: "" });
@@ -62,16 +63,10 @@ export function SupportPage({ t }) {
 }
 
 export function ContactPage({ t }) {
-  const categories = [
-    ["General inquiries", "استفسارات عامة"], ["Bug reports", "بلاغات الأخطاء"],
-    ["Feedback", "الملاحظات"], ["Privacy requests", "طلبات الخصوصية"], ["Partnerships", "الشراكات"],
-  ];
   return (
     <section><div className="w">
       <h1>{t("Contact", "تواصل معنا")}</h1>
-      <div className="g">{categories.map(([en, ar]) => (
-        <div className="c" key={en}><h3>{t(en, ar)}</h3><span className="mut">{t("Not configured yet", "لم يتم الإعداد بعد")}</span></div>
-      ))}</div>
+      <ContactMethods t={t} />
     </div></section>
   );
 }

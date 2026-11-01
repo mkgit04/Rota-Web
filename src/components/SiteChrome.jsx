@@ -1,4 +1,4 @@
-import { downloadLinks, navigation, pageTitles } from "../data";
+import { contacts, downloadLinks, navigation, pageTitles } from "../data";
 import logo from "../assets/app_logo.png";
 
 function PlatformIcon({ platform }) {
@@ -17,6 +17,75 @@ function PlatformIcon({ platform }) {
       <rect x="6" y="2.5" width="12" height="19" rx="2" />
       <path d="M10 5h4m-3 13h2" />
     </svg>
+  );
+}
+
+function ContactIcon({ icon }) {
+  const paths = {
+    email: <><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m4 7 8 6 8-6" /></>,
+    phone: <path d="M7 3h3l2 5-2 2a15 15 0 0 0 4 4l2-2 5 2v3c0 1.1-.9 2-2 2A16 16 0 0 1 5 5c0-1.1.9-2 2-2Z" />,
+    whatsapp: <><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4A8 8 0 1 1 20 11.5Z" /><path d="M9 8.5c.5 2 2.5 4 4.5 4.5l1-1 2 1v1c0 .6-.5 1-1 1A8 8 0 0 1 8 9c0-.5.4-1 1-1h1l1 2-1 1" /></>,
+    instagram: <><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r=".7" /></>,
+    facebook: <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3Z" />,
+  };
+
+  return (
+    <svg className="platform-icon" viewBox="0 0 24 24" aria-hidden="true">
+      {paths[icon]}
+    </svg>
+  );
+}
+
+function getContactHref(icon, value) {
+  const contact = value.trim();
+  if (!contact) return "";
+
+  switch (icon) {
+    case "email":
+      return contact.startsWith("mailto:") ? contact : `mailto:${contact}`;
+    case "phone": {
+      const number = contact.replace(/^tel:/, "").replace(/[^\d+*#,;]/g, "");
+      return number ? `tel:${number}` : "";
+    }
+    case "whatsapp": {
+      if (/^https?:\/\//i.test(contact)) return contact;
+      const number = contact.replace(/\D/g, "");
+      return number ? `https://wa.me/${number}` : "";
+    }
+    case "instagram": {
+      if (/^https?:\/\//i.test(contact)) return contact;
+      const username = contact.replace(/^@/, "").replace(/^\/+|\/+$/g, "");
+      return username ? `https://www.instagram.com/${username}/` : "";
+    }
+    default:
+      return contact;
+  }
+}
+
+export function ContactMethods({ t, compact = false }) {
+  const availableContacts = contacts
+    .map((contact) => ({ ...contact, href: getContactHref(contact.icon, contact.value) }))
+    .filter(({ href }) => href);
+
+  if (availableContacts.length === 0) {
+    return <p className="mut">{t("Contacts not configured yet.", "لم يتم إعداد بيانات التواصل بعد.")}</p>;
+  }
+
+  return (
+    <div className={compact ? "contact-methods compact" : "g contact-methods"}>
+      {availableContacts.map(({ label, labelAr, icon, href }) => (
+        <a
+          className={compact ? "contact-method" : "c contact-method"}
+          href={href}
+          key={icon}
+          target={href.startsWith("https://") ? "_blank" : undefined}
+          rel={href.startsWith("https://") ? "noopener noreferrer" : undefined}
+        >
+          <ContactIcon icon={icon} />
+          {t(label, labelAr)}
+        </a>
+      ))}
+    </div>
   );
 }
 
@@ -98,7 +167,10 @@ export function Footer({ t }) {
             <a href="#privacy-policy">{t("Privacy policy", "سياسة الخصوصية")}</a>
             <a href="#terms">{t("Terms of service", "شروط الخدمة")}</a>
           </div>
-          <div><strong>{t("Contact", "تواصل")}</strong><br /><span className="mut">{t("Not configured yet", "لم يتم الإعداد بعد")}</span></div>
+          <div>
+            <strong>{t("Contact", "تواصل")}</strong>
+            <ContactMethods t={t} compact />
+          </div>
         </div>
         <p className="mut footer-copy">
           © {new Date().getFullYear()} Rota. {t(

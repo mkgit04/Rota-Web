@@ -30,6 +30,15 @@ export const downloadLinks = [
   { platform: "iOS", icon: "ios", url: "" },
 ];
 
+export const contacts = [
+  { label: "Email", labelAr: "البريد الإلكتروني", icon: "email", value: "support.rota@gmail.com" },
+  { label: "Phone", labelAr: "الهاتف", icon: "phone", value: "" },
+  { label: "WhatsApp", labelAr: "واتساب", icon: "whatsapp", value: "" },
+  { label: "Instagram", labelAr: "إنستغرام", icon: "instagram", value: "https://www.instagram.com/rota.metro/" },
+  { label: "Facebook", labelAr: "فيسبوك", icon: "facebook", value: "https://www.facebook.com/people/Rota-Metro-App/61596184497860/" },
+];
+
+
 export const gpsNotice = [
   "GPS can be weak or unavailable underground, so station detection may be interrupted. Background tracking depends on permissions, battery settings and system limits, and is not guaranteed after the operating system closes the app.",
   "قد تضعف إشارة GPS أو تنقطع تحت الأرض، لذلك قد يتوقف اكتشاف المحطات. يعتمد التتبع في الخلفية على الأذونات وإعدادات البطارية وقيود النظام، ولا يُضمن بعد إغلاق النظام للتطبيق.",
