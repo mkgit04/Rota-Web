@@ -266,6 +266,27 @@
             gap: 16px
         }
 
+        .download-platforms {
+            margin-top: 16px
+        }
+
+        .download-platform-title {
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+
+        .platform-icon {
+            width: 24px;
+            height: 24px;
+            flex: 0 0 auto;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round
+        }
+
         html,
         body {
             overflow-x: hidden

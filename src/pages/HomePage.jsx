@@ -1,5 +1,5 @@
 import { features } from "../data";
-import { CardGrid, GpsNote, PhoneMockup } from "../components/SiteChrome";
+import { CardGrid, DownloadPlatforms, GpsNote, PhoneMockup } from "../components/SiteChrome";
 
 export default function HomePage({ t }) {
   const steps = [
@@ -22,7 +22,6 @@ export default function HomePage({ t }) {
             )}</p>
             <a className="btn" href="#features">{t("Explore Features", "استكشف المزايا")} <span className="arr">→</span></a>
             <a className="btn s" href="#how-it-works">{t("How Rota Works", "كيف يعمل روتا")}</a>
-            <p><span className="tag">{t("Coming Soon", "قريبًا")}</span> <span className="mut">{t("App store links will appear when available.", "ستظهر روابط المتاجر عند توفرها.")}</span></p>
           </div>
           <PhoneMockup t={t} />
         </div>
@@ -55,8 +54,8 @@ export default function HomePage({ t }) {
       <section>
         <div className="w c">
           <h2>{t("Ready when you are", "جاهز عندما تكون جاهزًا")}</h2>
-          <p>{t("Explore the features now. The official download link will appear once available.", "استكشف المزايا الآن. سيظهر رابط التحميل الرسمي عند توفره.")}</p>
-          <a className="btn" href="#download">{t("Download status", "حالة التحميل")}</a>
+          <p>{t("Choose your platform to check download availability.", "اختر منصتك للتحقق من توفر التحميل.")}</p>
+          <DownloadPlatforms t={t} />
         </div>
       </section>
     </>

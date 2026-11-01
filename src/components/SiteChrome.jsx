@@ -1,5 +1,47 @@
-import { navigation, pageTitles } from "../data";
+import { downloadLinks, navigation, pageTitles } from "../data";
 import logo from "../assets/app_logo.png";
+
+function PlatformIcon({ platform }) {
+  if (platform === "android") {
+    return (
+      <svg className="platform-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M7 9a5 5 0 0 1 10 0v7H7zM5 10v5m14-5v5M9 5 7.5 3.5M15 5l1.5-1.5" />
+        <circle cx="10" cy="7" r=".7" />
+        <circle cx="14" cy="7" r=".7" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg className="platform-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="6" y="2.5" width="12" height="19" rx="2" />
+      <path d="M10 5h4m-3 13h2" />
+    </svg>
+  );
+}
+
+export function DownloadPlatforms({ t }) {
+  return (
+    <div className="g download-platforms">
+      {downloadLinks.map(({ platform, icon, url }) => {
+        const availableUrl = url.trim();
+
+        return (
+          <div className="c" key={platform}>
+            <h3 className="download-platform-title"><PlatformIcon platform={icon} />{platform}</h3>
+            {availableUrl ? (
+              <a className="btn" href={availableUrl} target="_blank" rel="noopener noreferrer">
+                {t(`Download from ${platform}`, `حمّل لنظام ${platform === "Android" ? "أندرويد" : "iOS"}`)}
+              </a>
+            ) : (
+              <p className="mut">{t("Download link isn't available yet.", "رابط التحميل غير متاح بعد.")}</p>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
 export function Header({ page, language, setLanguage, onThemeToggle, menuOpen, setMenuOpen, t }) {
   return (

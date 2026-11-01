@@ -24,6 +24,12 @@ export const features = [
   ["Arabic/English and light/dark", "عربي/إنجليزي ووضع فاتح/داكن"],
 ];
 
+export const downloadLinks = [
+  { platform: "ApkPure", icon: "android", url: "https://apkpure.com/rota/com.mk.rota#google_vignette" },
+  { platform: "Android", icon: "android", url: "" },
+  { platform: "iOS", icon: "ios", url: "" },
+];
+
 export const gpsNotice = [
   "GPS can be weak or unavailable underground, so station detection may be interrupted. Background tracking depends on permissions, battery settings and system limits, and is not guaranteed after the operating system closes the app.",
   "قد تضعف إشارة GPS أو تنقطع تحت الأرض، لذلك قد يتوقف اكتشاف المحطات. يعتمد التتبع في الخلفية على الأذونات وإعدادات البطارية وقيود النظام، ولا يُضمن بعد إغلاق النظام للتطبيق.",

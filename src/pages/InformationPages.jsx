@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { faqItems, features, howItWorks, ticketTypes } from "../data";
-import { CardGrid, GpsNote, PhoneMockup } from "../components/SiteChrome";
+import { downloadLinks, faqItems, features, howItWorks, ticketTypes } from "../data";
+import { CardGrid, DownloadPlatforms, GpsNote, PhoneMockup } from "../components/SiteChrome";
 
 export function FeaturesPage({ t }) {
   const categories = [
@@ -109,18 +109,17 @@ export function AboutPage({ t }) {
 }
 
 export function DownloadPage({ t }) {
+  const hasAvailableLink = downloadLinks.some(({ url }) => url.trim());
+
   return (
     <section><div className="w">
       <h1>{t("Download", "التحميل")}</h1>
-      <p className="mut">{t("Release status: not yet available. No store links have been published.", "حالة الإصدار: غير متاح بعد. لم تُنشر أي روابط متاجر.")}</p>
+      <p className="mut">{hasAvailableLink
+        ? t("Choose your platform to download Rota.", "اختر منصتك لتحميل روتا.")
+        : t("Downloads aren't available yet. No store links have been published.", "التحميل غير متاح بعد. لم تُنشر أي روابط متاجر.")
+      }</p>
       <div className="g">
-        {["Android", "iOS"].map((platform) => (
-          <div className="c" key={platform}>
-            <h3>{platform}</h3>
-            <span className="tag">{t("Coming Soon", "قريبًا")}</span>
-            <p><span className="btn unavailable" aria-disabled="true">{t("Not yet available", "غير متاح بعد")}</span></p>
-          </div>
-        ))}
+        <DownloadPlatforms t={t} />
         <PhoneMockup t={t} />
       </div>
     </div></section>
