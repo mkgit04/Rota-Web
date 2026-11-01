@@ -50,11 +50,11 @@
             margin: 0;
             background: var(--bg);
             color: var(--fg);
-            font: 16px/1.65 system-ui, "Segoe UI", Tahoma, "Noto Naskh Arabic", sans-serif
+            font: 16px/1.65 "Anta", sans-serif
         }
 
         [dir=rtl] body {
-            font-family: "Noto Naskh Arabic", Tahoma, "Segoe UI", system-ui, sans-serif;
+            font-family: "Cairo", sans-serif;
             line-height: 1.9
         }
 

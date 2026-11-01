@@ -18,7 +18,7 @@ export function Header({ page, language, setLanguage, onThemeToggle, menuOpen, s
         <div className="ctl">
           <button className="ib" type="button" aria-label={t("Switch theme", "تغيير المظهر")} onClick={onThemeToggle}>◐</button>
           <button className="ib" type="button" aria-label={t("Change language", "تغيير اللغة")} onClick={setLanguage}>
-            {language === "ar" ? "English" : "عربي"}
+            {language === "ar" ? "EN" : "AR"}
           </button>
           <button
             className="ib"
