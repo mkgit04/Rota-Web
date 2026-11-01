@@ -29,29 +29,63 @@ function developerLink(field, value) {
 
 export function FeaturesPage({ t }) {
   const categories = [
-    ["Metro exploration", "استكشاف المترو", [0, 1]],
-    ["Journey planning", "تخطيط الرحلة", [2, 3, 4, 5]],
-    ["Location and navigation", "الموقع والتنقل", [6, 7]],
-    ["Live trip", "الرحلة المباشرة", [8, 9, 10]],
-    ["Personalization", "التخصيص", [11]],
+    ["Explore Cairo Metro", "استكشف مترو القاهرة", [0, 1]],
+    ["Plan Your Journey", "خطط رحلتك", [2, 3, 4, 5]],
+    ["Walking Navigation", "التنقل سيرًا على الأقدام", [6, 7]],
+    ["Live Journey Tracking", "تتبع رحلتك المباشرة", [8, 9, 10]],
+    ["Trip History & Favourites", "سجل الرحلات والمفضلة", [11]],
   ];
+
   return (
-    <section><div className="w">
-      <h1>{t("Features", "المزايا")}</h1>
-      {categories.map(([en, ar, indexes]) => (
-        <div key={en}><h2>{t(en, ar)}</h2><CardGrid items={indexes.map((index) => features[index])} t={t} /></div>
-      ))}
-      <h2>{t("Feedback and notifications", "الملاحظات والإشعارات")}</h2>
-      <CardGrid items={[
-        ["Submit feedback via the configured feedback form", "أرسل ملاحظاتك عبر نموذج الملاحظات"],
-        ["Supported push notifications", "إشعارات الدفع المدعومة"],
-      ]} t={t} />
-      <p className="mut">{t(
-        "Location permission is used for nearby stations and live trips; you can change it in device settings.",
-        "يُستخدم إذن الموقع لإيجاد المحطات القريبة والرحلات المباشرة، ويمكنك تغييره من إعدادات الجهاز.",
-      )}</p>
-      <GpsNote t={t} />
-    </div></section>
+    <section>
+      <div className="w">
+        <h1>{t("Rota Features", "مميزات روتا")}</h1>
+
+        <p className="mut">
+          {t(
+            "Everything you need to make your Cairo Metro journeys easier, from planning your route to tracking your trip.",
+            "كل ما تحتاجه لجعل رحلاتك بمترو القاهرة أسهل، بدايةً من تخطيط مسارك وحتى متابعة رحلتك."
+          )}
+        </p>
+
+        {categories.map(([en, ar, indexes]) => (
+          <div key={en}>
+            <h2>{t(en, ar)}</h2>
+            <CardGrid
+              items={indexes.map((index) => features[index])}
+              t={t}
+            />
+          </div>
+        ))}
+
+        <h2>
+          {t("Feedback & Notifications", "الملاحظات والإشعارات")}
+        </h2>
+
+        <CardGrid
+          items={[
+            [
+              "Share your feedback and help us improve Rota.",
+              "شاركنا ملاحظاتك وساعدنا على تحسين روتا."
+            ],
+            [
+              "Receive supported notifications to stay updated.",
+              "استقبل الإشعارات المدعومة للبقاء على اطلاع."
+            ],
+          ]}
+          t={t}
+        />
+
+        <div className="note">
+          {t(
+            "Location access is required for nearby station discovery, walking navigation and live trip tracking. Background location access may be needed to keep tracking your journey when the app is not in the foreground. You can manage these permissions anytime through your device settings.",
+            "يلزم السماح بالوصول إلى الموقع للعثور على المحطات القريبة واستخدام التنقل سيرًا على الأقدام وتتبع الرحلات المباشرة. وقد يتطلب استمرار تتبع رحلتك أثناء عدم استخدام التطبيق في الواجهة السماح بالوصول إلى الموقع في الخلفية. يمكنك إدارة هذه الأذونات في أي وقت من إعدادات جهازك."
+          )}
+        </div>
+
+        <GpsNote t={t} />
+      </div>
+    </section>
   );
 }
 
@@ -127,62 +161,106 @@ export function AboutPage({ t }) {
       href: developerLink(field, developer[field]),
     }))
     .filter(({ value }) => value);
-  const hasDeveloperInfo = [developer.name, developer.nameAr, developer.image, developer.role, developer.roleAr, developer.bio, developer.bioAr].some((value) => value.trim())
-    || configuredLinks.length > 0;
+
+  const hasDeveloperInfo = [
+    developer.name,
+    developer.nameAr,
+    developer.image,
+    developer.role,
+    developer.roleAr,
+    developer.bio,
+    developer.bioAr,
+  ].some((value) => value.trim()) || configuredLinks.length > 0;
 
   return (
-    <section><div className="w narrow">
-      <h1>{t("About Rota", "عن روتا")}</h1>
-      <p>{t(
-        "Rota exists to make Cairo Metro journeys easier to understand: explore lines, plan trips, calculate fares and follow your progress.",
-        "وُجد روتا ليجعل رحلات مترو القاهرة أسهل فهمًا: استكشاف الخطوط وتخطيط الرحلات وحساب الأجرة ومتابعة التقدم.",
-      )}</p>
-      <div className="c">
-        <h2>{t("Developer", "المطوّر")}</h2>
-        {hasDeveloperInfo ? (
-          <div className="developer-profile">
-            {developer.image.trim() && (
-              <img
-                className="developer-image"
-                src={developer.image}
-                alt={t(developer.imageAlt, developer.imageAltAr)}
-              />
-            )}
-            <div className="developer-details">
-              {(developer.name.trim() || developer.nameAr.trim()) && (
-                <h3 className="developer-name">{t(developer.name, developer.nameAr)}</h3>
+    <section>
+      <div className="w narrow">
+        <h1>{t("About Rota", "عن روتا")}</h1>
+
+        <p>
+          {t(
+            "Rota is designed to make Cairo Metro journeys easier, smarter, and more convenient. Explore metro lines, plan your trips, find the nearest station with walking distance and estimated time, calculate fares, track your journey progress, and save your favourite trips for quick access.",
+            "تم تصميم روتا لجعل رحلات مترو القاهرة أسهل وأكثر ذكاءً وراحة. استكشف خطوط المترو، وخطط رحلاتك، واعثر على أقرب محطة مع معرفة مسافة ووقت المشي المتوقع، واحسب الأجرة، وتابع تقدم رحلتك، واحفظ رحلاتك المفضلة للوصول إليها بسهولة."
+          )}
+        </p>
+
+        <div className="c">
+          <h2>{t("Developer", "المطوّر")}</h2>
+
+          {hasDeveloperInfo ? (
+            <div className="developer-profile">
+              {developer.image.trim() && (
+                <img
+                  className="developer-image"
+                  src={developer.image}
+                  alt={t(developer.imageAlt, developer.imageAltAr)}
+                />
               )}
-              {(developer.role.trim() || developer.roleAr.trim()) && <p className="mut">{t(developer.role, developer.roleAr)}</p>}
-              {(developer.bio.trim() || developer.bioAr.trim()) && <p>{t(developer.bio, developer.bioAr)}</p>}
-              {configuredLinks.length > 0 && (
-                <ul className="developer-links">
-                  {configuredLinks.map(({ field, label, labelAr, icon, value, href }) => (
-                    <li key={field}>
-                      <DeveloperLinkIcon icon={icon} />
-                      <strong>{t(label, labelAr)}: </strong>
-                      <a
-                        href={href}
-                        target={field === "email" ? undefined : "_blank"}
-                        rel={field === "email" ? undefined : "noopener noreferrer"}
-                      >{value}</a>
-                    </li>
-                  ))}
-                </ul>
-              )}
+
+              <div className="developer-details">
+                {(developer.name.trim() || developer.nameAr.trim()) && (
+                  <h3 className="developer-name">
+                    {t(developer.name, developer.nameAr)}
+                  </h3>
+                )}
+
+                {(developer.role.trim() || developer.roleAr.trim()) && (
+                  <p className="mut">
+                    {t(developer.role, developer.roleAr)}
+                  </p>
+                )}
+
+                {(developer.bio.trim() || developer.bioAr.trim()) && (
+                  <p>
+                    {t(developer.bio, developer.bioAr)}
+                  </p>
+                )}
+
+                {configuredLinks.length > 0 && (
+                  <ul className="developer-links">
+                    {configuredLinks.map(
+                      ({ field, label, labelAr, icon, value, href }) => (
+                        <li key={field}>
+                          <DeveloperLinkIcon icon={icon} />
+                          <strong>{t(label, labelAr)}: </strong>
+                          <a
+                            href={href}
+                            target={field === "email" ? undefined : "_blank"}
+                            rel={
+                              field === "email"
+                                ? undefined
+                                : "noopener noreferrer"
+                            }
+                          >
+                            {value}
+                          </a>
+                        </li>
+                      )
+                    )}
+                  </ul>
+                )}
+              </div>
             </div>
-          </div>
-        ) : (
-          <p className="mut">{t("Developer details are not configured yet.", "لم يتم إعداد بيانات المطوّر بعد.")}</p>
-        )}
+          ) : (
+            <p className="mut">
+              {t(
+                "Developer details are not configured yet.",
+                "لم يتم إعداد بيانات المطوّر بعد."
+              )}
+            </p>
+          )}
+        </div>
+
+        <div className="note">
+          {t(
+            "Rota is an independent application and is not affiliated with, operated or endorsed by Cairo Metro or the National Authority for Tunnels.",
+            "روتا تطبيق مستقل وغير تابع لمترو القاهرة أو الهيئة القومية للأنفاق ولا تشغّله أو تعتمده."
+          )}
+        </div>
       </div>
-      <div className="note">{t(
-        "Rota is an independent application and is not affiliated with, operated or endorsed by Cairo Metro or the National Authority for Tunnels.",
-        "روتا تطبيق مستقل وغير تابع لمترو القاهرة أو الهيئة القومية للأنفاق ولا تشغّله أو تعتمده.",
-      )}</div>
-    </div></section>
+    </section>
   );
 }
-
 export function DownloadPage({ t }) {
   const hasAvailableLink = downloadLinks.some(({ url }) => url.trim());
 

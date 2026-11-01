@@ -6,10 +6,24 @@ function LegalContent({ title, sections, t }) {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const renderSectionText = (text) => {
+    const contactPhrase = /(contact|التواصل عبر:)/i;
+    const match = contactPhrase.exec(text);
+    if (!match || match.index === undefined) return text;
+
+    return (
+      <>
+        {text.slice(0, match.index)}
+        <a href="#contact">{match[0]}</a>
+        {text.slice(match.index + match[0].length)}
+      </>
+    );
+  };
+
   return (
     <section><div className="w narrow">
       <h1>{title}</h1>
-      <p className="mut">{t("Last updated", "آخر تحديث")}: {t("Pending", "قيد الإعداد")}</p>
+      <p className="mut">{t("Last updated", "آخر تحديث")}: {t("1 November 2026", "1 نوفمبر 2026")}</p>
       <div className="note">{t(
         "Awaiting verification: some facts about this release are still being confirmed and are not stated as final.",
         "بانتظار التحقق: ما زال بعض الحقائق عن هذا الإصدار قيد التأكيد ولا تُعرض كنهائية.",
@@ -25,10 +39,10 @@ function LegalContent({ title, sections, t }) {
         <div className="legal-section" id={`legal-${index}`} key={item[0]}>
           <h2>{index + 1}. {t(item[0], item[2])}</h2>
           <p>
-            {t(item[1], item[3])}
-            {index === 0 || index === sections.length - 1
+            {renderSectionText(t(item[1], item[3]))}
+            {/* {index === 0 || index === sections.length - 1
               ? <span className="mut">{t("Not configured yet", "لم يتم الإعداد بعد")}</span>
-              : null}
+              : null} */}
           </p>
         </div>
       ))}
