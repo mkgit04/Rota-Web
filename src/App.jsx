@@ -62,7 +62,9 @@ export default function App() {
         }
       });
     }, { threshold: 0.1 });
-    document.querySelectorAll("main .c, main h2, main .note, main details").forEach((element, index) => {
+    document.querySelectorAll(
+      "main .w > h1, main .w > h2, main .w > p, main .w > .note, main .w > .c, main .w > form, main .g > *, main details, main .legal-section, footer .g > *",
+    ).forEach((element, index) => {
       element.classList.add("rv");
       element.style.setProperty("--d", `${(index % 4) * 70}ms`);
       observer.observe(element);
