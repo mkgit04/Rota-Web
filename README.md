@@ -37,3 +37,14 @@ Store links, operator details, and contact destinations remain unconfigured, mat
 The ticket page fetches the `tickets` Remote Config parameter when opened, as JSON with a `metro` array. The Firebase web app configuration is supplied through Vite environment variables; copy `.env.example` to `.env.local` and fill in the values from **Firebase Console → Project settings → Your apps → Web app**. Local `.env.local` files are ignored by Git.
 
 Publish the `tickets` parameter in Remote Config as a JSON string containing the ticket data. The app validates the payload and displays only a successfully fetched remote value. It shows a loading or error message rather than bundled ticket data when the parameter is missing or a fetch fails.
+
+## Google Sheets support messages
+
+The support form submits messages to the spreadsheet tab in the provided sheet using Google Apps Script:
+
+1. Sign in to the Google account that can edit the support spreadsheet and create a project at [script.google.com](https://script.google.com/).
+2. Replace the project's existing code with [`google-apps-script/Code.gs`](./google-apps-script/Code.gs) and save it.
+3. Select **Deploy → New deployment → Web app**. Set **Execute as** to your account and access to **Anyone** so visitors can submit the form. Authorize the script to access your spreadsheet.
+4. The deployed URL is configured as the default support endpoint in the website. If you redeploy the Apps Script, update that URL in `src/pages/SupportPages.jsx`, or set `VITE_SUPPORT_WEB_APP_URL` as a build-time override, then rebuild and redeploy the site.
+
+The script writes a timestamp, name, email, category, message, and optional device details to the sheet tab identified by its `gid`. It creates a header row when the tab is empty, validates inputs, rate-limits repeat submissions from the same email address, and relays its confirmation through Google's iframe redirect. The endpoint must be publicly accessible for the form to work; never put Google service-account credentials in the website.

@@ -1020,6 +1020,55 @@
             font-size: 14px
         }
 
+        .support-honeypot {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap
+        }
+
+        .support-result {
+            min-height: 1.65em;
+            margin-top: 12px
+        }
+
+        .support-result.success {
+            color: var(--pd)
+        }
+
+        :root[data-theme=dark] .support-result.success {
+            color: var(--lk)
+        }
+
+        :root[data-theme=dark] .support-result.error {
+            color: #ff8a7a
+        }
+
+        @media(prefers-color-scheme: dark) {
+            :root:not([data-theme=light]) .support-result.success {
+                color: var(--lk)
+            }
+
+            :root:not([data-theme=light]) .support-result.error {
+                color: #ff8a7a
+            }
+        }
+
+        .support-result.submitting {
+            color: var(--mut)
+        }
+
+        .support-result.error {
+            color: #c0392b
+        }
+
+        button:disabled {
+            opacity: .7;
+            cursor: wait
+        }
+
         .unavailable {
             opacity: .55;
             cursor: not-allowed;

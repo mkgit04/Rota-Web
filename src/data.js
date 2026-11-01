@@ -178,9 +178,9 @@ export const faqItems = [
   ],
   [
     "How can I send feedback or report a problem?",
-    "You can submit feedback through the feedback form available in the app. You can use it to share suggestions or report issues.",
+    "Use the Support page to send suggestions or report an issue. Your message is saved to Rota's support Google Sheet.",
     "كيف يمكنني إرسال ملاحظات أو الإبلاغ عن مشكلة؟",
-    "يمكنك إرسال ملاحظاتك من خلال نموذج الملاحظات داخل التطبيق، سواء لمشاركة اقتراحاتك أو الإبلاغ عن مشكلة."
+    "استخدم صفحة الدعم لإرسال اقتراحاتك أو الإبلاغ عن مشكلة. تُحفظ رسالتك في جدول بيانات دعم روتا على Google."
   ],
   [
     "Is Rota officially affiliated with Cairo Metro?",
@@ -210,9 +210,9 @@ export const privacySections = [
   ],
   [
     "Information processed",
-    "Depending on the features you use, Rota may process: device location to identify nearby stations, calculate walking distances and estimated walking times, and support active-trip tracking; trip information such as starting and destination stations, trip dates, status and journey progress; locally stored data such as trip history, favourite trips, language and theme preferences; feedback voluntarily submitted by you; and notification registration data. The use of analytics, crash reporting and other diagnostic services, as well as whether location data is transmitted outside your device, must be confirmed before publication.",
+    "Depending on the features you use, Rota may process: device location to identify nearby stations, calculate walking distances and estimated walking times, and support active-trip tracking; trip information such as starting and destination stations, trip dates, status and journey progress; locally stored data such as trip history, favourite trips, language and theme preferences; and support messages you submit, including your email address and any optional name or device details. The use of analytics, crash reporting and other diagnostic services, as well as whether location data is transmitted outside your device, must be confirmed before publication.",
     "المعلومات التي تتم معالجتها",
-    "وفقًا للمزايا التي تستخدمها، قد يعالج روتا: موقع الجهاز لتحديد أقرب المحطات وحساب مسافات وأوقات المشي المتوقعة ودعم تتبع الرحلات النشطة؛ ومعلومات الرحلات مثل محطات البداية والوجهة وتواريخ الرحلات وحالتها ومدى التقدم فيها؛ والبيانات المحفوظة محليًا مثل سجل الرحلات والرحلات المفضلة وتفضيلات اللغة والمظهر؛ والملاحظات التي ترسلها طوعًا؛ وبيانات تسجيل الإشعارات. يجب التأكد قبل النشر من استخدام خدمات التحليلات وتقارير الأعطال والتشخيص، وما إذا كانت بيانات الموقع تُرسل خارج جهازك.",
+    "وفقًا للمزايا التي تستخدمها، قد يعالج روتا: موقع الجهاز لتحديد أقرب المحطات وحساب مسافات وأوقات المشي المتوقعة ودعم تتبع الرحلات النشطة؛ ومعلومات الرحلات مثل محطات البداية والوجهة وتواريخ الرحلات وحالتها ومدى التقدم فيها؛ والبيانات المحفوظة محليًا مثل سجل الرحلات والرحلات المفضلة وتفضيلات اللغة والمظهر؛ ورسائل الدعم التي ترسلها، بما فيها بريدك الإلكتروني وأي اسم أو تفاصيل جهاز اختيارية. يجب التأكد قبل النشر من استخدام خدمات التحليلات وتقارير الأعطال والتشخيص، وما إذا كانت بيانات الموقع تُرسل خارج جهازك.",
   ],
   [
     "How information is used",
@@ -240,9 +240,9 @@ export const privacySections = [
   ],
   [
     "Third-party services",
-    "Rota may rely on third-party services to provide certain features. User feedback is submitted through Google Forms. Firebase services, including push notifications and any analytics or crash reporting tools, must be identified and confirmed before this policy is finalized. Third-party providers may process information according to their own privacy policies and terms.",
+    "Rota uses Google Apps Script and Google Sheets to receive and store support messages submitted through the support form. Google processes this information under its applicable privacy terms. Other Firebase services, including push notifications and any analytics or crash reporting tools, must be identified and confirmed before this policy is finalized.",
     "خدمات الأطراف الثالثة",
-    "قد يعتمد روتا على خدمات تابعة لأطراف ثالثة لتوفير بعض المزايا. ويتم إرسال ملاحظات المستخدمين من خلال Google Forms. يجب تحديد خدمات Firebase المستخدمة، بما في ذلك الإشعارات الفورية وأي أدوات للتحليلات أو تقارير الأعطال، والتأكد منها قبل اعتماد هذه السياسة. وقد تعالج الجهات الخارجية المعلومات وفقًا لسياسات الخصوصية والشروط الخاصة بها.",
+    "يستخدم روتا Google Apps Script وGoogle Sheets لاستقبال رسائل الدعم المرسلة عبر نموذج الدعم وتخزينها. وتعالج Google هذه المعلومات وفقًا لشروط الخصوصية المعمول بها لديها. يجب تحديد خدمات Firebase الأخرى المستخدمة، بما في ذلك الإشعارات الفورية وأي أدوات للتحليلات أو تقارير الأعطال، والتأكد منها قبل اعتماد هذه السياسة.",
   ],
   [
     "Sharing and disclosure",
@@ -252,9 +252,9 @@ export const privacySections = [
   ],
   [
     "Retention and deletion",
-    "Information stored locally may remain on your device until you delete it, clear the application data or uninstall the application, subject to the application's storage implementation. Information processed by third-party providers is subject to their retention policies and applicable configurations. Specific retention periods and deletion procedures must be confirmed before publication.",
+    "Information stored locally may remain on your device until you delete it, clear the application data or uninstall the application, subject to the application's storage implementation. Support messages are stored in Rota's Google Sheet until they are deleted by the support team. Other information processed by third-party providers is subject to their retention policies and applicable configurations.",
     "الاحتفاظ بالبيانات وحذفها",
-    "قد تظل المعلومات المحفوظة محليًا على جهازك حتى تقوم بحذفها أو مسح بيانات التطبيق أو إلغاء تثبيته، وذلك وفقًا لطريقة تنفيذ التخزين داخل التطبيق. أما المعلومات التي تعالجها الجهات الخارجية فتخضع لسياسات الاحتفاظ وإعدادات تلك الجهات. يجب التأكد من مدد الاحتفاظ وإجراءات الحذف المحددة قبل النشر.",
+    "قد تظل المعلومات المحفوظة محليًا على جهازك حتى تقوم بحذفها أو مسح بيانات التطبيق أو إلغاء تثبيته، وذلك وفقًا لطريقة تنفيذ التخزين داخل التطبيق. وتُحفظ رسائل الدعم في جدول بيانات روتا على Google حتى يحذفها فريق الدعم. أما المعلومات الأخرى التي تعالجها الجهات الخارجية فتخضع لسياسات الاحتفاظ وإعدادات تلك الجهات.",
   ],
   [
     "Security",
