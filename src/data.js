@@ -1,3 +1,5 @@
+import developerImage from "./assets/developer.jpg";
+
 export const navigation = [
   ["home", "Home", "الرئيسية"],
   ["features", "Features", "المزايا"],
@@ -38,6 +40,28 @@ export const contacts = [
   { label: "Facebook", labelAr: "فيسبوك", icon: "facebook", value: "https://www.facebook.com/people/Rota-Metro-App/61596184497860/" },
 ];
 
+export const developer = {
+  name: "Mohammed Khattab",
+  nameAr: "محمد خطاب",
+  image: developerImage,
+  imageAlt: "Developer portrait",
+  imageAltAr: "صورة المطوّر",
+  role: "Software Developer | Flutter Developer",
+  roleAr: "مطوّر برمجيات | مطوّر Flutter",
+  bio: "A passionate developer working on innovative mobile applications.",
+  bioAr: "مطوّر شغوف بإنشاء تطبيقات جوّال مبتكرة.",
+  email: "mhmd.ahmd.khattab@gmail.com.com",
+  website: "https://mkgit04.github.io",
+  github: "https://github.com/mkgit04",
+  linkedin: "https://www.linkedin.com/in/mohammed-mk-khattab",
+};
+
+export const developerLinks = [
+  { field: "email", label: "Email", labelAr: "البريد الإلكتروني", icon: "email" },
+  { field: "website", label: "Website", labelAr: "الموقع الإلكتروني", icon: "website" },
+  { field: "github", label: "GitHub", labelAr: "GitHub", icon: "github" },
+  { field: "linkedin", label: "LinkedIn", labelAr: "LinkedIn", icon: "linkedin" },
+];
 
 export const gpsNotice = [
   "GPS can be weak or unavailable underground, so station detection may be interrupted. Background tracking depends on permissions, battery settings and system limits, and is not guaranteed after the operating system closes the app.",

@@ -1,6 +1,31 @@
 import { useState } from "react";
-import { downloadLinks, faqItems, features, howItWorks, ticketTypes } from "../data";
+import { developer, developerLinks, downloadLinks, faqItems, features, howItWorks, ticketTypes } from "../data";
 import { CardGrid, DownloadPlatforms, GpsNote, PhoneMockup } from "../components/SiteChrome";
+
+function DeveloperLinkIcon({ icon }) {
+  const iconContent = {
+    email: <path d="M3 5h18v14H3zM3 6l9 7 9-7" />,
+    website: <><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" /></>,
+    github: <><path d="M9 19c-4.5 1.5-4.5-2.5-6-3m12 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.1-1.5 6.1-6.7a5.2 5.2 0 0 0-1.4-3.6 4.8 4.8 0 0 0-.1-3.6S17.5 1.3 14 4a13.2 13.2 0 0 0-6 0C4.5 1.3 2.3 2.6 2.3 2.6a4.8 4.8 0 0 0-.1 3.6A5.2 5.2 0 0 0 .8 9.8c0 5.2 3.1 6.4 6.1 6.7a3.4 3.4 0 0 0-.9 2.6V22" /></>,
+    linkedin: <><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M8 10v7m0-10v.1M12 17v-7m0 3a3 3 0 0 1 6 0v4" /></>,
+  };
+
+  return (
+    <svg className="developer-link-icon" viewBox="0 0 24 24" aria-hidden="true">
+      {iconContent[icon]}
+    </svg>
+  );
+}
+
+function developerLink(field, value) {
+  const trimmedValue = value.trim();
+  if (!trimmedValue) return "";
+  if (field === "email") {
+    return `mailto:${trimmedValue.replace(/^mailto:/i, "")}`;
+  }
+  if (/^https?:\/\//i.test(trimmedValue)) return trimmedValue;
+  return `https://${trimmedValue}`;
+}
 
 export function FeaturesPage({ t }) {
   const categories = [
@@ -92,6 +117,19 @@ export function FaqPage({ t }) {
 }
 
 export function AboutPage({ t }) {
+  const configuredLinks = developerLinks
+    .map(({ field, label, labelAr, icon }) => ({
+      field,
+      label,
+      labelAr,
+      icon,
+      value: developer[field].trim(),
+      href: developerLink(field, developer[field]),
+    }))
+    .filter(({ value }) => value);
+  const hasDeveloperInfo = [developer.name, developer.nameAr, developer.image, developer.role, developer.roleAr, developer.bio, developer.bioAr].some((value) => value.trim())
+    || configuredLinks.length > 0;
+
   return (
     <section><div className="w narrow">
       <h1>{t("About Rota", "عن روتا")}</h1>
@@ -99,7 +137,44 @@ export function AboutPage({ t }) {
         "Rota exists to make Cairo Metro journeys easier to understand: explore lines, plan trips, calculate fares and follow your progress.",
         "وُجد روتا ليجعل رحلات مترو القاهرة أسهل فهمًا: استكشاف الخطوط وتخطيط الرحلات وحساب الأجرة ومتابعة التقدم.",
       )}</p>
-      <div className="c"><h3>{t("Developer", "المطوّر")}</h3><p className="mut">{t("Not configured yet", "لم يتم الإعداد بعد")}</p></div>
+      <div className="c">
+        <h2>{t("Developer", "المطوّر")}</h2>
+        {hasDeveloperInfo ? (
+          <div className="developer-profile">
+            {developer.image.trim() && (
+              <img
+                className="developer-image"
+                src={developer.image}
+                alt={t(developer.imageAlt, developer.imageAltAr)}
+              />
+            )}
+            <div className="developer-details">
+              {(developer.name.trim() || developer.nameAr.trim()) && (
+                <h3 className="developer-name">{t(developer.name, developer.nameAr)}</h3>
+              )}
+              {(developer.role.trim() || developer.roleAr.trim()) && <p className="mut">{t(developer.role, developer.roleAr)}</p>}
+              {(developer.bio.trim() || developer.bioAr.trim()) && <p>{t(developer.bio, developer.bioAr)}</p>}
+              {configuredLinks.length > 0 && (
+                <ul className="developer-links">
+                  {configuredLinks.map(({ field, label, labelAr, icon, value, href }) => (
+                    <li key={field}>
+                      <DeveloperLinkIcon icon={icon} />
+                      <strong>{t(label, labelAr)}: </strong>
+                      <a
+                        href={href}
+                        target={field === "email" ? undefined : "_blank"}
+                        rel={field === "email" ? undefined : "noopener noreferrer"}
+                      >{value}</a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        ) : (
+          <p className="mut">{t("Developer details are not configured yet.", "لم يتم إعداد بيانات المطوّر بعد.")}</p>
+        )}
+      </div>
       <div className="note">{t(
         "Rota is an independent application and is not affiliated with, operated or endorsed by Cairo Metro or the National Authority for Tunnels.",
         "روتا تطبيق مستقل وغير تابع لمترو القاهرة أو الهيئة القومية للأنفاق ولا تشغّله أو تعتمده.",
