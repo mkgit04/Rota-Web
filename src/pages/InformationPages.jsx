@@ -223,7 +223,7 @@ export function AboutPage({ t }) {
         </p>
 
         <div className="c">
-          <h2>{t("Developer", "المطوّر")}</h2>
+          <h2>{t("Developer Profile", "الملف الشخصي للمطور")}</h2>
 
           {hasDeveloperInfo ? (
             <div className="developer-profile">
