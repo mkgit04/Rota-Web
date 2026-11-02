@@ -381,7 +381,7 @@ export const termsSections = [
   ],
   [
     "Contact and effective date",
-    "For questions or concerns regarding these Terms of Service, contact: [YOUR CONTACT EMAIL]. Effective date: [PUBLICATION DATE].",
+    "For questions or concerns regarding these Terms of Service, contact. Effective date: 01 November 2026.",
     "التواصل وتاريخ السريان",
     "للاستفسارات أو الملاحظات المتعلقة بشروط الاستخدام، يُرجى التواصل عبر: [بريد التواصل]. تاريخ السريان: [تاريخ النشر].",
   ],

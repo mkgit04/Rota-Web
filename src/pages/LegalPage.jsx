@@ -24,10 +24,10 @@ function LegalContent({ title, sections, t }) {
     <section><div className="w narrow">
       <h1>{title}</h1>
       <p className="mut">{t("Last updated", "آخر تحديث")}: {t("1 November 2026", "1 نوفمبر 2026")}</p>
-      <div className="note">{t(
+      {/* <div className="note">{t(
         "Awaiting verification: some facts about this release are still being confirmed and are not stated as final.",
         "بانتظار التحقق: ما زال بعض الحقائق عن هذا الإصدار قيد التأكيد ولا تُعرض كنهائية.",
-      )}</div>
+      )}</div> */}
       <nav className="toc" aria-label={t("Contents", "المحتويات")}>
         {sections.map((item, index) => (
           <a href={`#legal-${index}`} onClick={(event) => scrollToSection(event, `legal-${index}`)} key={item[0]}>
